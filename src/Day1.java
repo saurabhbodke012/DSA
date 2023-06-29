@@ -1,38 +1,37 @@
-public class day1{
+public class Day1{
 
     // 1. Search a 2D Matrix
-    public int search(int[] nums, int target) {
-        
-        if(nums.length==0 || nums == null ){
-            return -1;
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length==0 || matrix == null ){
+            return false;
         }
         
-        int rows = nums.length;
-        int cols = nums[0].length;
+        int rows = matrix.length;
+        int cols = matrix[0].length;
         int low = 0;
         int high = (rows*cols) -1;
 
-        while ( low < high){
+        while ( low <= high){
 
             int mid = low + (high - low) /2;
 
-            if (target == nums[mid/cols][mid%cols]){
-                return mid;
+            if (target == matrix[mid/cols][mid%cols]){
+                return true;
             }
-            else if( target > nums[mid/cols][mid%cols] ){
+            else if( target > matrix[mid/cols][mid%cols] ){
                 low = mid +1;
             }else{
-                high = mid;
+                high = mid-1;
             }
             
         }
 
-        return -1;
+        return false;
     }
 
 
     // 2.Search in Rotated Sorted Array 
-    public int search(int[] nums, int target) {
+    public int searchArr(int[] nums, int target) {
         
         if(nums.length==0 || nums == null ){
             return -1;
