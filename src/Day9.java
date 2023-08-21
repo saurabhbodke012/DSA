@@ -19,5 +19,48 @@ public class Day9 {
         return arr;
     }
 
-    
+    // Diagonal Traverse
+    public int[] findDiagonalOrder(int[][] mat) {
+        
+        int rows = mat.length; 
+        int cols = mat[0].length;
+        int[] arr = new int[rows*cols];
+        int index =0;
+        int r = 0;
+        int c = 0;
+        boolean flag = true;
+        while ( index < arr.length){
+            arr[index] = mat[r][c];
+            index++;
+
+            // traverse UP 
+            if( flag ){
+                if ( c == cols -1){
+                    r++;
+                    flag = false;
+                }else if( r == 0){
+                    c++;
+                    flag = false;
+                }else{
+                    r--;
+                    c++;
+                }
+            }else if( flag == false){
+                if ( r == rows -1){
+                    c++;
+                    flag = true;
+                }else if( c == 0){
+                    r++;
+                    flag = true;
+                }else{
+                    r++;
+                    c--;
+                }
+            }
+
+        }
+
+        return arr;
+
+    }
 }
