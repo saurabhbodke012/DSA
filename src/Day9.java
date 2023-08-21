@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Day9 {
     // Product of itself
     public int[] productExceptSelf(int[] nums) {
@@ -18,6 +21,7 @@ public class Day9 {
 
         return arr;
     }
+
 
     // Diagonal Traverse
     public int[] findDiagonalOrder(int[][] mat) {
@@ -62,5 +66,48 @@ public class Day9 {
 
         return arr;
 
+    }
+
+
+    // Spiral Traverse
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int rows = matrix.length; 
+        int cols = matrix[0].length;
+
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        int left = 0; 
+        int top = 0; 
+        int right = cols-1;
+        int bot = rows-1;
+
+        while(top<=bot && left<=right){
+            
+            for ( int i=left;i<=right; i++){
+                arr.add(matrix[top][i]);           
+            }
+            top++;
+
+            for(int i=top; i<=bot; i++){
+                arr.add(matrix[i][right]);  
+            }
+            right--;
+        
+            if(top<=bot){
+                for(int i= right; i>=left; i--){
+                    arr.add(matrix[bot][i]);
+                }
+            }    
+            bot--;
+
+            if(left<=right){
+                for(int i=bot; i>=top; i--){
+                   arr.add(matrix[i][left]);
+                }
+            }    
+            left++;
+
+        }
+
+        return arr;
     }
 }
