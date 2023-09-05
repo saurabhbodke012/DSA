@@ -28,4 +28,28 @@ public class Day12 {
         return slow;
     }
     
+
+    // Search in a 2D matrix II
+    public boolean searchMatrix(int[][] matrix, int target) {
+
+        if ( matrix == null || matrix.length == 0){
+            return false;
+        }
+
+        int rows = 0;
+        int cols = matrix[0].length -1;
+
+        while ( rows < matrix.length && cols>=0){
+            int result = matrix[rows][cols];
+            if ( result == target){
+                return true;
+            }else if ( result > target){
+                cols -- ;
+            }else if ( result < target){
+                rows++;
+            }
+        }
+
+        return false;
+    }    
 }
