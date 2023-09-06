@@ -52,4 +52,34 @@ public class Day12 {
 
         return false;
     }    
+
+    // Sort Colors
+    public void sortColors(int[] nums) {
+        
+        int red = 0; 
+        int white = 0;
+        int blue = nums.length-1;
+
+        while ( white <= blue){
+
+            if( nums[white] == 2){
+                swap (nums, white,blue);
+                blue--;
+            }else if ( nums[white] == 0){
+                swap(nums,white,red);
+                red++;
+                white++;
+            }else if( nums[white] == 1){
+                white++;
+            }
+
+        }
+    }
+
+    private static void swap( int[] nums, int start, int end){
+
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+    }
 }
