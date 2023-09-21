@@ -40,6 +40,26 @@ public class Day14 {
 
 
     // Sum Root to Leaf Numbers
-    
+    public int sumNumbers(TreeNode root) {
+        return helper (root, 0);
+    }
+
+    public int helper( TreeNode root, int currSum){
+
+        if( root == null){
+            return 0;
+        }
+
+        currSum = currSum*10 + root.val;
+        if(root.left == null && root.right == null){
+            return currSum;
+        }
+
+        int sumLeft = helper(root.left, currSum);
+        int sumRight = helper(root.right, currSum);
+
+        return sumLeft + sumRight;
+
+    }
     
 }
